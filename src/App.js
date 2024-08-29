@@ -9,14 +9,14 @@ import Create from "./pages/Create";
 import Detail from "./pages/Detail";
 
 function App() {
-  return (
-    <Routes>
-        <Route path={''} element={<Home/>} />
-        <Route path={'update/:id'} element={<Update />} />
-        <Route path={'create'} element={<Create />} />
-        <Route path={'detail/:id'} element={<Detail />} />
-    </Routes>
-  );
+    return (
+        <Routes>
+            <Route path={''} element={<Home/>}/>
+            <Route path={'update/:id'} element={<Update/>}/>
+            <Route path={'create'} element={<Create/>}/>
+            <Route path={'detail/:id'} element={<Detail/>}/>
+        </Routes>
+    );
 }
 
 export default App;

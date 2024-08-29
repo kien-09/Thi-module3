@@ -1,17 +1,17 @@
-import { useNavigate, useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import axios from "axios";
 
-export default function Detail(){
+export default function Detail() {
     const navigate = useNavigate();
     const [data, setData] = useState([]);
     let {id} = useParams();
     useEffect(() => {
-        axios.get("http://localhost:3000/products/"+id).then(res => {
+        axios.get("http://localhost:3000/products/" + id).then(res => {
             setData(res.data)
         })
     }, [])
-    return(
+    return (
         <div className="container mt-5">
             <h2>Chi tiết sản phẩm</h2>
             <div className="card">

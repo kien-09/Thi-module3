@@ -2,7 +2,7 @@ import {useNavigate, useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import axios from "axios";
 
-export default function Update(){
+export default function Update() {
     let [title, setTitle] = useState("");
     let [price, setPrice] = useState("");
     let [description, setDescription] = useState("");
@@ -21,23 +21,23 @@ export default function Update(){
         let dataInput = event.target.value;
         setDescription(dataInput);
     }
-    useEffect(()=>{
-        axios.get("http://localhost:3000/products/"+idUpdate).then((res)=>{
+    useEffect(() => {
+        axios.get("http://localhost:3000/products/" + idUpdate).then((res) => {
             let data = res.data;
             setTitle(data.title);
             setPrice(data.price);
             setDescription(data.description);
         })
-    },[])
+    }, [])
     const submit = () => {
         let product = {
-            title:title, price: price, description:description
+            title: title, price: price, description: description
         }
         axios.put(`http://localhost:3000/products/${idUpdate}`, product).then(() => {
             alert("Update Success!");
         })
     }
-    return(
+    return (
         <div className="container mt-5">
             <h2>Sửa sản phẩm</h2>
             <div>
@@ -63,9 +63,10 @@ export default function Update(){
                            placeholder="Nhập mô tả"/>
                 </div>
             </div>
-            <button className="btn btn-primary me-2" onClick={()=>{
+            <button className="btn btn-primary me-2" onClick={() => {
                 submit()
-            }}>Sửa</button>
+            }}>Sửa
+            </button>
             <button className="btn btn-secondary" onClick={() => navigate('/')}>Trở lại</button>
         </div>
     )

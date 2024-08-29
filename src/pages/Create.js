@@ -2,7 +2,7 @@ import {Link, useNavigate} from "react-router-dom";
 import {useState} from "react";
 import axios from "axios";
 
-export default function Create(){
+export default function Create() {
     let [title, setTitle] = useState("");
     let [price, setPrice] = useState("");
     let [description, setDescription] = useState("");
@@ -21,13 +21,13 @@ export default function Create(){
     }
     const submit = () => {
         let product = {
-            title:title, price: price, description:description
+            title: title, price: price, description: description
         }
         axios.post("http://localhost:3000/products", product).then(() => {
             alert("Thêm thành công!");
         })
     }
-    return(
+    return (
         <div className="container mt-5">
             <h2>Thêm sản phẩm</h2>
             <div>
@@ -53,9 +53,10 @@ export default function Create(){
                            placeholder="Nhập mô tả"/>
                 </div>
             </div>
-            <button className="btn btn-primary me-2" onClick={()=>{
+            <button className="btn btn-primary me-2" onClick={() => {
                 submit()
-            }}>Thêm</button>
+            }}>Thêm
+            </button>
             <button className="btn btn-secondary" onClick={() => navigate('/')}>Trở lại</button>
         </div>
     )
