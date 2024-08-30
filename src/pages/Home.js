@@ -15,7 +15,7 @@ export default function Home() {
         getAll();
     }, []);
     const remove = (id) => {
-        axios.delete(`http://localhost:3000/products/${id}`).then((res) => {
+        axios.delete(`http://localhost:3000/products/${id.target.getAttribute("data-item")}`).then((res) => {
             navigate('/')
             getAll();
         })
@@ -48,10 +48,10 @@ export default function Home() {
                             <td>{item.description}</td>
                             <td>
                                 <button type="button" className="btn btn-danger me-2" data-toggle="modal"
-                                        data-target="#exampleModal">
+                                        data-target={`#exampleModal-${item.id}`}>
                                     Xóa
                                 </button>
-                                <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog"
+                                <div className="modal fade" id={`exampleModal-${item.id}`}  role="dialog"
                                      aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div className="modal-dialog" role="document">
                                         <div className="modal-content">
@@ -63,9 +63,9 @@ export default function Home() {
                                                         data-dismiss="modal">Cancel
                                                 </button>
                                                 <button type="button" className="btn btn-primary" data-dismiss="modal"
-                                                        onClick={() => {
-                                                            remove(item.id)
-                                                        }}>Ok
+                                                        data-item={item.id}
+                                                        onClick={(id) => remove(id)}
+                                                >Ok
                                                 </button>
                                             </div>
                                         </div>
